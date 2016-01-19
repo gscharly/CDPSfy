@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CDPSfy</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href='/stylesheets/bootstrap.min.css'>
+    <link rel='stylesheet' href='/stylesheets/estilo.css' />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+  <header>
+    <div class="brand">CDPSFY</div>
+    
+</header>
+
+
+    <div class="container">
+    <div class="row">
+     <%if(!session.user){%>
+        <h3 class="text-center"><a href="/login">Login</a>
+        
+        </h3>
+        <%}else{%>
+        <h3 class="text-center"> <%=session.user.username%> <a href="/logout">Logout</a>
+        </h3>
+        <%}%>
+    </div>
+    </div>
+   
+      <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand " href="#page-top">CDPSfy</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li><a href="/">Home</a></li>
+               <li><a href="/tracks">Tracks</a></li>
+          <%if(!session.user){%>
+              <li><a href="/user">Sign in </a></li>
+          <%}%>
+          <%if(session.user){%>
+          <li><a href="/user/<%=session.user.id%>/edit">Settings</a></li>
+          <%if(!session.user.isAdmin){%>
+          <li><a href="/user/<%=session.user.id%>/tracks">My tracks</a></li>
+          <li><a href="/user/<%=session.user.id%>/favourites">Mi lista favorita</a></li>
+          <%}%>
+          <li><a href="/tracks/new">Upload new track</a></li>
+          <%}%>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+      <div class="container">
+      <div class="row">
+      <div class="box">
+      <% if(errors && errors.length) { %>
+        <span id="ErrorMsgs">
+          <% for (var i in errors) { %>
+            <h3> <%= errors[i].message %> </h3> <br>
+            <% } %>
+        </span>
+        <% } %>
+
+      <%- body %>
+      </div>
+      </div>
+      </div>
+
+
+      <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>Copyright &copy; CDPS 2016</p>
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/javascripts/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/javascripts/bootstrap.min.js"></script>
+
+  </body>
+</html>

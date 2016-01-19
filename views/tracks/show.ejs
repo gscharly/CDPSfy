@@ -1,0 +1,13 @@
+<div class="row text-center">
+	<img class="navegacion" src="<%=track.photo%>">
+	<h3><%=track.name.split('_')[0]%></h3>
+	<audio src="<%=track.url%>" type="audio/mpeg" controls="controls"></audio>
+	
+	<%if(session.user && (session.user.isAdmin || session.user.id === track.UserId)){%>
+	<form method="post" action="/tracks/<%=track.id%>?_method=delete">
+	    <button class="btn btn-info" type="submit" onClick="return confirm('Delete: <%=track.name%>. Are you sure? ');">
+	      Delete track
+	    </button>
+  	</form>
+  	<%}%>
+</div>

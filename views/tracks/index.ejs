@@ -1,0 +1,30 @@
+
+
+<h3 class ="text-center"><%=mensaje%></h3>
+<div class="row">
+
+<%for (var t in tracks)  {%>
+			<div class="col-md-6">
+			<img class="navegacion " src="<%=tracks[t].photo%>">
+			<a class="track" href='/tracks/<%=tracks[t].id%>'>
+			<h3><%=tracks[t].name.split('_')[0]%></h3>
+			</a>
+			<p>Uploaded by User: <%=tracks[t].UserId%></p>
+			<%if(session.user && !session.user.isAdmin){%>
+			<%if(favs.indexOf(tracks[t].id)>=0){%>
+			<%console.log("Favs " + favs)%>
+				<form method="post" action="/user/<%=session.user.id%>/favourites/<%=tracks[t].id%>?_method=delete">
+					<button class="btn btn-info " type="submit" onClick="return confirm('Quitar de favoritos')">Quitar de lista</button>
+					</form>
+					<%} else{%>
+						<form method="post" action="/user/<%=session.user.id%>/favourites/<%= tracks[t].id%>?_method=put">
+							<button class="btn btn-info " type="submit">Añadir a lista</button>
+							</form>
+							<%}%>
+							<%}%>
+			</div>					
+
+       
+<%}%>
+
+</div>
