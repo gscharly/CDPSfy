@@ -57,15 +57,16 @@
                 <li><a href="/">Home</a></li>
                <li><a href="/tracks">Tracks</a></li>
           <%if(!session.user){%>
-              <li><a href="/user">Sign in </a></li>
+              <li><a href="/user">Sign up </a></li>
           <%}%>
           <%if(session.user){%>
-          <li><a href="/user/<%=session.user.id%>/edit">Settings</a></li>
+           <li><a href="/tracks/new">Upload new track</a></li>
           <%if(!session.user.isAdmin){%>
           <li><a href="/user/<%=session.user.id%>/tracks">My tracks</a></li>
           <li><a href="/user/<%=session.user.id%>/favourites">Mi lista favorita</a></li>
           <%}%>
-          <li><a href="/tracks/new">Upload new track</a></li>
+         
+          <li><a href="/user/<%=session.user.id%>/edit">Settings</a></li>
           <%}%>
             </ul>
         </div>

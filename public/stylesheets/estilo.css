@@ -194,8 +194,7 @@ footer p {
     }
 }
 
-.carousel-inner { text-align: center; }
-.carousel .item > img { display: inline-block; }
+
 
 .btn {
     -webkit-border-radius: 28;
@@ -266,17 +265,3 @@ div.wrapper{
     max-width: 400px;
 }
 
-/* Botón Ir Arriba
------------------------------------------------ */
-#IrArriba {
-    position: fixed;
-    bottom: 30px; /* Distancia desde abajo */
-    right: 30px; /* Distancia desde la derecha */
-}
-
-#IrArriba span {
-    width: 60px; /* Ancho del botón */
-    height: 60px; /* Alto del botón */
-    display: block;
-    background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAAAACPI/ojfEGiaNmGw/s60/flecha-arriba.png) no-repeat center center;
-}
